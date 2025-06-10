@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>一些最近写比赛项目的心得 | sdtggd的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="从24年10月份开始，我就开始在邬老师的指导下写物联网大赛的比赛项目，主要就是将前端、后端、数据库给串通起来，前端用的是vue框架，后端用的是nodejs加koa框架加websocket协议、http协议、mqtt协议，数据库有的就是mysql，现在让我说一下遇到的一些问题以及怎么解决的吧。 首先这个项目既然是为了物联网大赛，肯定是要与物理层进行通信的，大体就是物理层传数据，应用层接受数据并传控制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些最近写比赛项目的心得">
+<meta property="og:url" content="https://lhaik.gitcode.host/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:site_name" content="sdtggd的博客">
+<meta property="og:description" content="从24年10月份开始，我就开始在邬老师的指导下写物联网大赛的比赛项目，主要就是将前端、后端、数据库给串通起来，前端用的是vue框架，后端用的是nodejs加koa框架加websocket协议、http协议、mqtt协议，数据库有的就是mysql，现在让我说一下遇到的一些问题以及怎么解决的吧。 首先这个项目既然是为了物联网大赛，肯定是要与物理层进行通信的，大体就是物理层传数据，应用层接受数据并传控制">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-09T12:20:29.000Z">
+<meta property="article:modified_time" content="2025-06-10T09:53:18.827Z">
+<meta property="article:author" content="lhaik">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="sdtggd的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sdtggd的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">学习记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://lhaik.gitcode.host"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-一些最近写比赛项目的心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" class="article-date">
+  <time class="dt-published" datetime="2025-06-09T12:20:29.000Z" itemprop="datePublished">2025-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      一些最近写比赛项目的心得
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre><code>从24年10月份开始，我就开始在邬老师的指导下写物联网大赛的比赛项目，主要就是将前端、后端、数据库给串通起来，前端用的是vue框架，后端用的是nodejs加koa框架加websocket协议、http协议、mqtt协议，数据库有的就是mysql，现在让我说一下遇到的一些问题以及怎么解决的吧。
+首先这个项目既然是为了物联网大赛，肯定是要与物理层进行通信的，大体就是物理层传数据，应用层接受数据并传控制底层设备的指令，很普遍，但有意思的是，最开始我们都是使用mqtt协议进行传输的，很简单，就调几个api就行，但因为25年物联网大赛的更新，要求我们跟上时代的步伐，项目要与大模型进行集成，就是说服务器要接入大模型，用于识别底层传的视频，并要求我们用http协议，好了，现在讲遇到的一些问题：
+1.心跳问题：
+    心跳反应是很常见的判断设备是否在线的方法，具体就是物理层要在特定时间向应用层发送一个心跳消息，那么应用层要设置一个定时器用来循环心跳检测，在定时器内又设置在几秒内如果未收到心跳消息则会判断设备掉线，然后我们需到的问题就是即便物理层一直在发送心跳，但应用层有时还是会判断设备掉线，这是因为在定时器时间间隔，如定时器是三秒一次，而判断的时间是2秒，那么就会存在一秒的间隔，这时候如果物理层的心跳也是在1秒以上的时间发送心跳，就会卡到这个间隔上，导致设备掉线，所以物理层就要把心跳设在1秒内发送
+
+2.事件监听方法
+    在项目要求实时更新数据，其实是很简单的事情就是通过ws来实现，但怎么将ws和http协议接受数据联系起来就是问题了，这时就要用到全局事件监听了，在nodejs中，我们可以通过events模块来实现，在events模块中，有一个EventEmitter类，这个类提供了一些方法，我们可以通过这个类来创建一个事件监听器，然后通过这个监听器来监听事件，当事件发生时，可以执行相应的回调函数。比如
+    events.emit(&#39;update&#39;,&#123;
+        type:&#39;sensor&#39;
+    &#125;)这是暴露一个名为update的事件，然后在ws中就要监听这个事件，当出现事件的时候，就提醒前端进行数据更新
+     events.on(&#39;update&#39;,(payload)=&gt;&#123;
+        let type = payload.type
+        if(type == &#39;error&#39;)&#123;
+            ws.send(JSON.stringify(&#39;error&#39;))
+        &#125;else if(type == &#39;sensor&#39;)&#123;
+            ws.send(JSON.stringify(&#39;sensor&#39;))
+        &#125;else&#123;
+            ws.send(JSON.stringify(&#39;behavior&#39;))
+        &#125;
+    &#125;)
+
+3.如何将不同的指令动态的渲染到页面上
+    这真是当初难死我的地方，首先我们要根据指令的类型写好组件，然后在父组件上根据后端发过来的数据中的指令类型来动态渲染组件。
+    getComponentName(direct) &#123;
+        switch (direct.f_type) &#123;
+        case &#39;1&#39;:
+            return &#39;SwitchComponent&#39;;
+        case &#39;2&#39;:
+            return &#39;InputControl&#39;;
+        case &#39;3&#39;:
+            return &#39;SliderComponent&#39;;
+        case &#39;4&#39;:
+            return &#39;DateControl&#39;;
+        case &#39;5&#39;:
+            return &#39;RadioControl&#39;;
+        case &#39;6&#39;:
+            return &#39;DateRange&#39;;
+        default:
+            return &#39;div&#39;; // 默认渲染一个 div
+        &#125;
+    &#125;
+    &lt;div class=&quot;content&quot;&gt;
+        &lt;component v-for=&quot;direct in all_direct&quot; 
+        :key=&quot;direct.order&quot; 
+        :is=&quot;getComponentName(direct)&quot; 
+        :direct=&quot;direct&quot; :d_no=&quot;null&quot; @sendDirect=&quot;sendDirect&quot;
+        :style=&quot;&#39;margin-left:&#39; + 20 * direct.level + &#39;px;margin-top:10px;&#39;&quot;&gt;&lt;/component&gt;
+    &lt;/div&gt;
+    值得注意的是，在vue中如果key相同的话，那么组件会复用，不会重新渲染。所以在处理不同设备相同指令的时候，key值要取一个唯一值，不然指令不会刷新。然后还有在浏览器中ajax或是axios请求的次数是有限的，因为每次改变一个指令都要重新请求，请求次数过多就不再刷新了，所以我这里用的是ws
+
+4.如何将表格中的地址改成能点击的超链接
+    这里用到的是插槽
+    &lt;el-table-column v-for=&quot;(p,index) in header1&quot; 
+        :prop=&quot;p.prop&quot; 
+        :key=&quot;index&quot;
+        :label=&quot;p.label&quot;
+        width=&quot;180&quot;
+    &gt;
+        &lt;template #default=&quot;scope&quot;&gt;//名字为default，scope为上下文
+            &lt;a 
+            v-if=&quot;p.label === &#39;视频地址 &#39;&quot; 
+            :href=&quot;scope.row[p.prop]&quot; 
+            target=&quot;_blank&quot;  // 允许打开新窗口
+            rel=&quot;noopener noreferrer&quot;
+            &gt;
+                点击播放
+            &lt;/a&gt;
+            &lt;span v-else&gt;&#123;&#123; scope.row[p.prop] &#125;&#125;&lt;/span&gt;
+        &lt;/template&gt;
+    &lt;/el-table-column&gt;
+
+暂时只想到这些，后续如果想到新的，会继续添加 
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lhaik.gitcode.host/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" data-id="cmbqcgbjv0001nsg6cv6j0ayl" data-title="一些最近写比赛项目的心得" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">koa2的学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/">一些最近写比赛项目的心得</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/">koa2的学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 lhaik<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
