@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>hexo部署个人博客 | sdtggd的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="#通过nodejs下载hexonpm install -g hexo-cli 创建博客目录并进入mkdir my-hexo-blog &amp;&amp; cd my-hexo-blog 初始化 Hexo 项目hexo init 安装依赖npm install #配置 Hexo 部署到 GitHub#编辑博客目录下的 _config.yml 文件，找到 deploy 部分并修改：yamldeplo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo部署个人博客">
+<meta property="og:url" content="https://sdtggd.github.io/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="sdtggd的博客">
+<meta property="og:description" content="#通过nodejs下载hexonpm install -g hexo-cli 创建博客目录并进入mkdir my-hexo-blog &amp;&amp; cd my-hexo-blog 初始化 Hexo 项目hexo init 安装依赖npm install #配置 Hexo 部署到 GitHub#编辑博客目录下的 _config.yml 文件，找到 deploy 部分并修改：yamldeplo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-19T10:57:04.000Z">
+<meta property="article:modified_time" content="2025-07-19T11:00:06.962Z">
+<meta property="article:author" content="sdtggd">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="sdtggd的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sdtggd的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">学习记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sdtggd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hexo部署个人博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T10:57:04.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      hexo部署个人博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#通过nodejs下载hexo<br>npm install -g hexo-cli</p>
+<h1 id="创建博客目录并进入"><a href="#创建博客目录并进入" class="headerlink" title="创建博客目录并进入"></a>创建博客目录并进入</h1><p>mkdir my-hexo-blog &amp;&amp; cd my-hexo-blog</p>
+<h1 id="初始化-Hexo-项目"><a href="#初始化-Hexo-项目" class="headerlink" title="初始化 Hexo 项目"></a>初始化 Hexo 项目</h1><p>hexo init</p>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>npm install</p>
+<p>#配置 Hexo 部署到 GitHub<br>#编辑博客目录下的 _config.yml 文件，找到 deploy 部分并修改：<br>yaml<br>deploy:<br>  type: git<br>  repo: <a target="_blank" rel="noopener" href="https://github.com/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io.git">https://github.com/你的用户名/你的用户名.github.io.git</a><br>  branch: main  # 注意：如果是旧仓库可能是 master 分支</p>
+<p>#安装部署插件<br>npm install hexo-deployer-git –save</p>
+<h1 id="清除旧的静态文件"><a href="#清除旧的静态文件" class="headerlink" title="清除旧的静态文件"></a>清除旧的静态文件</h1><p>hexo clean</p>
+<h1 id="生成新的静态文件"><a href="#生成新的静态文件" class="headerlink" title="生成新的静态文件"></a>生成新的静态文件</h1><p>hexo generate</p>
+<h1 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h1><p>hexo deploy</p>
+<p>#可通过hexo new “文章标题”生成新文件 然后再执行 hexo c &amp;&amp; hexo g &amp;&amp; hexo d 来部署新文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sdtggd.github.io/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="cmda4zose0000jwg6cgdvew6t" data-title="hexo部署个人博客" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">docker部署云服务器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">hexo部署个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">docker部署云服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/">一些最近写比赛项目的心得</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/">koa2的学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 sdtggd<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

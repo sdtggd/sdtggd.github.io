@@ -75,6 +75,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo部署个人博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T10:57:04.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">hexo部署个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#通过nodejs下载hexo<br>npm install -g hexo-cli</p>
+<h1 id="创建博客目录并进入"><a href="#创建博客目录并进入" class="headerlink" title="创建博客目录并进入"></a>创建博客目录并进入</h1><p>mkdir my-hexo-blog &amp;&amp; cd my-hexo-blog</p>
+<h1 id="初始化-Hexo-项目"><a href="#初始化-Hexo-项目" class="headerlink" title="初始化 Hexo 项目"></a>初始化 Hexo 项目</h1><p>hexo init</p>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>npm install</p>
+<p>#配置 Hexo 部署到 GitHub<br>#编辑博客目录下的 _config.yml 文件，找到 deploy 部分并修改：<br>yaml<br>deploy:<br>  type: git<br>  repo: <a target="_blank" rel="noopener" href="https://github.com/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io.git">https://github.com/你的用户名/你的用户名.github.io.git</a><br>  branch: main  # 注意：如果是旧仓库可能是 master 分支</p>
+<p>#安装部署插件<br>npm install hexo-deployer-git –save</p>
+<h1 id="清除旧的静态文件"><a href="#清除旧的静态文件" class="headerlink" title="清除旧的静态文件"></a>清除旧的静态文件</h1><p>hexo clean</p>
+<h1 id="生成新的静态文件"><a href="#生成新的静态文件" class="headerlink" title="生成新的静态文件"></a>生成新的静态文件</h1><p>hexo generate</p>
+<h1 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h1><p>hexo deploy</p>
+<p>#可通过hexo new “文章标题”生成新文件 然后再执行 hexo c &amp;&amp; hexo g &amp;&amp; hexo d 来部署新文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sdtggd.github.io/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="cmda4zose0000jwg6cgdvew6t" data-title="hexo部署个人博客" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-docker部署云服务器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
@@ -431,6 +479,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/19/hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">hexo部署个人博客</a>
+          </li>
         
           <li>
             <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">docker部署云服务器</a>
