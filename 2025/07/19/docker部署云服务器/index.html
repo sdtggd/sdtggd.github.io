@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>docker部署云服务器 | sdtggd的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="node为例，在工作目录上创建文件Dockerfile文本内容: 基础镜像（Node.js官方镜像，选与你本地开发一致的版本）FROM node:20.19.2-alpine 创建工作目录WORKDIR &#x2F;app 复制package.json和package-lock.jsonCOPY package*.json .&#x2F; 安装依赖RUN npm install –producti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker部署云服务器">
+<meta property="og:url" content="https://sdtggd.github.io/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="sdtggd的博客">
+<meta property="og:description" content="node为例，在工作目录上创建文件Dockerfile文本内容: 基础镜像（Node.js官方镜像，选与你本地开发一致的版本）FROM node:20.19.2-alpine 创建工作目录WORKDIR &#x2F;app 复制package.json和package-lock.jsonCOPY package*.json .&#x2F; 安装依赖RUN npm install –producti">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-19T10:52:03.000Z">
+<meta property="article:modified_time" content="2025-07-19T10:53:02.383Z">
+<meta property="article:author" content="sdtggd">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="sdtggd的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">sdtggd的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">学习记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sdtggd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-docker部署云服务器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T10:52:03.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      docker部署云服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>node为例，在工作目录上创建文件Dockerfile<br>文本内容:</p>
+<h1 id="基础镜像（Node-js官方镜像，选与你本地开发一致的版本）"><a href="#基础镜像（Node-js官方镜像，选与你本地开发一致的版本）" class="headerlink" title="基础镜像（Node.js官方镜像，选与你本地开发一致的版本）"></a>基础镜像（Node.js官方镜像，选与你本地开发一致的版本）</h1><p>FROM node:20.19.2-alpine</p>
+<h1 id="创建工作目录"><a href="#创建工作目录" class="headerlink" title="创建工作目录"></a>创建工作目录</h1><p>WORKDIR &#x2F;app</p>
+<h1 id="复制package-json和package-lock-json"><a href="#复制package-json和package-lock-json" class="headerlink" title="复制package.json和package-lock.json"></a>复制package.json和package-lock.json</h1><p>COPY package*.json .&#x2F;</p>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>RUN npm install –production  # 生产环境安装（忽略devDependencies）</p>
+<h1 id="复制项目代码到工作目录"><a href="#复制项目代码到工作目录" class="headerlink" title="复制项目代码到工作目录"></a>复制项目代码到工作目录</h1><p>COPY . .</p>
+<h1 id="暴露服务端口（与你Node-js代码中监听的端口一致，例如3000）"><a href="#暴露服务端口（与你Node-js代码中监听的端口一致，例如3000）" class="headerlink" title="暴露服务端口（与你Node.js代码中监听的端口一致，例如3000）"></a>暴露服务端口（与你Node.js代码中监听的端口一致，例如3000）</h1><p>EXPOSE 4000</p>
+<h1 id="启动命令（根据你的入口文件调整，例如node-app-js）"><a href="#启动命令（根据你的入口文件调整，例如node-app-js）" class="headerlink" title="启动命令（根据你的入口文件调整，例如node app.js）"></a>启动命令（根据你的入口文件调整，例如node app.js）</h1><p>CMD [“node”, “app.js”]</p>
+<p>命令：<br>docker pull node:20.19.2-alpine  #先单独拉取node官方镜像，避免网络问题，导致构建不了<br>docker build -t my-node-app:v1 .   # 构建镜像，标签为my-node-app:v1  记得带后面的点，表示构建当前文件夹</p>
+<p>docker run -d -p 3000:3000 –name my-node-service my-node-app:v1 运行测试</p>
+<p>docker save -o my-node-app.tar my-node-app:v1  #打包镜像为rar文件</p>
+<h1 id="格式：scp-本地镜像路径-服务器用户名-服务器IP-目标路径"><a href="#格式：scp-本地镜像路径-服务器用户名-服务器IP-目标路径" class="headerlink" title="格式：scp 本地镜像路径 服务器用户名@服务器IP:目标路径"></a>格式：scp 本地镜像路径 服务器用户名@服务器IP:目标路径</h1><p>scp my-node-app.tar root@你的服务器公网IP:&#x2F;home&#x2F;</p>
+<p>ssh root@公网ip   # 登录云服务器</p>
+<p>docker load -i &#x2F;home&#x2F;my-node-app.tar</p>
+<h1 id="查看镜像是否加载成功"><a href="#查看镜像是否加载成功" class="headerlink" title="查看镜像是否加载成功"></a>查看镜像是否加载成功</h1><p>docker images  # 应能看到my-node-app:v1</p>
+<h1 id="运行容器，映射端口（服务器端口-容器端口，确保服务器端口未被占用）"><a href="#运行容器，映射端口（服务器端口-容器端口，确保服务器端口未被占用）" class="headerlink" title="运行容器，映射端口（服务器端口:容器端口，确保服务器端口未被占用）"></a>运行容器，映射端口（服务器端口:容器端口，确保服务器端口未被占用）</h1><p>docker run -d  –name my-node-server -p 80:3000 –restart always my-node-app:v1</p>
+<p> docker stop my-node-server  #停止服务</p>
+<p> docker rm my-node-server  #移除服务</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sdtggd.github.io/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cmda4qqra0001gkg6aw3a8ijk" data-title="docker部署云服务器" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">一些最近写比赛项目的心得</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">docker部署云服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/">一些最近写比赛项目的心得</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/">koa2的学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 sdtggd<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -75,6 +75,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker部署云服务器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T10:52:03.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">docker部署云服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>node为例，在工作目录上创建文件Dockerfile<br>文本内容:</p>
+<h1 id="基础镜像（Node-js官方镜像，选与你本地开发一致的版本）"><a href="#基础镜像（Node-js官方镜像，选与你本地开发一致的版本）" class="headerlink" title="基础镜像（Node.js官方镜像，选与你本地开发一致的版本）"></a>基础镜像（Node.js官方镜像，选与你本地开发一致的版本）</h1><p>FROM node:20.19.2-alpine</p>
+<h1 id="创建工作目录"><a href="#创建工作目录" class="headerlink" title="创建工作目录"></a>创建工作目录</h1><p>WORKDIR &#x2F;app</p>
+<h1 id="复制package-json和package-lock-json"><a href="#复制package-json和package-lock-json" class="headerlink" title="复制package.json和package-lock.json"></a>复制package.json和package-lock.json</h1><p>COPY package*.json .&#x2F;</p>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><p>RUN npm install –production  # 生产环境安装（忽略devDependencies）</p>
+<h1 id="复制项目代码到工作目录"><a href="#复制项目代码到工作目录" class="headerlink" title="复制项目代码到工作目录"></a>复制项目代码到工作目录</h1><p>COPY . .</p>
+<h1 id="暴露服务端口（与你Node-js代码中监听的端口一致，例如3000）"><a href="#暴露服务端口（与你Node-js代码中监听的端口一致，例如3000）" class="headerlink" title="暴露服务端口（与你Node.js代码中监听的端口一致，例如3000）"></a>暴露服务端口（与你Node.js代码中监听的端口一致，例如3000）</h1><p>EXPOSE 4000</p>
+<h1 id="启动命令（根据你的入口文件调整，例如node-app-js）"><a href="#启动命令（根据你的入口文件调整，例如node-app-js）" class="headerlink" title="启动命令（根据你的入口文件调整，例如node app.js）"></a>启动命令（根据你的入口文件调整，例如node app.js）</h1><p>CMD [“node”, “app.js”]</p>
+<p>命令：<br>docker pull node:20.19.2-alpine  #先单独拉取node官方镜像，避免网络问题，导致构建不了<br>docker build -t my-node-app:v1 .   # 构建镜像，标签为my-node-app:v1  记得带后面的点，表示构建当前文件夹</p>
+<p>docker run -d -p 3000:3000 –name my-node-service my-node-app:v1 运行测试</p>
+<p>docker save -o my-node-app.tar my-node-app:v1  #打包镜像为rar文件</p>
+<h1 id="格式：scp-本地镜像路径-服务器用户名-服务器IP-目标路径"><a href="#格式：scp-本地镜像路径-服务器用户名-服务器IP-目标路径" class="headerlink" title="格式：scp 本地镜像路径 服务器用户名@服务器IP:目标路径"></a>格式：scp 本地镜像路径 服务器用户名@服务器IP:目标路径</h1><p>scp my-node-app.tar root@你的服务器公网IP:&#x2F;home&#x2F;</p>
+<p>ssh root@公网ip   # 登录云服务器</p>
+<p>docker load -i &#x2F;home&#x2F;my-node-app.tar</p>
+<h1 id="查看镜像是否加载成功"><a href="#查看镜像是否加载成功" class="headerlink" title="查看镜像是否加载成功"></a>查看镜像是否加载成功</h1><p>docker images  # 应能看到my-node-app:v1</p>
+<h1 id="运行容器，映射端口（服务器端口-容器端口，确保服务器端口未被占用）"><a href="#运行容器，映射端口（服务器端口-容器端口，确保服务器端口未被占用）" class="headerlink" title="运行容器，映射端口（服务器端口:容器端口，确保服务器端口未被占用）"></a>运行容器，映射端口（服务器端口:容器端口，确保服务器端口未被占用）</h1><p>docker run -d  –name my-node-server -p 80:3000 –restart always my-node-app:v1</p>
+<p> docker stop my-node-server  #停止服务</p>
+<p> docker rm my-node-server  #移除服务</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sdtggd.github.io/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cmda4qqra0001gkg6aw3a8ijk" data-title="docker部署云服务器" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-一些最近写比赛项目的心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" class="article-date">
@@ -174,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sdtggd.github.io/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" data-id="cmbqcojga0001g4g61ebod964" data-title="一些最近写比赛项目的心得" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sdtggd.github.io/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/" data-id="cmda4qqrf0002gkg6bozi3hur" data-title="一些最近写比赛项目的心得" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -334,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sdtggd.github.io/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="cmbqcojg70000g4g69fur4pkp" data-title="koa2的学习" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://sdtggd.github.io/2025/06/06/koa2%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="cmda4qqr70000gkg6g1p7dw9b" data-title="koa2的学习" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -364,7 +420,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a></li></ul>
     </div>
   </div>
 
@@ -375,6 +431,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/19/docker%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">docker部署云服务器</a>
+          </li>
         
           <li>
             <a href="/2025/06/09/%E4%B8%80%E4%BA%9B%E6%9C%80%E8%BF%91%E5%86%99%E6%AF%94%E8%B5%9B%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97/">一些最近写比赛项目的心得</a>
